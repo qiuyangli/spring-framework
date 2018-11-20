@@ -57,6 +57,10 @@ public interface Resource extends InputStreamSource {
 	 * existence of a {@code Resource} handle only guarantees a valid
 	 * descriptor handle.
 	 */
+	/**
+	 * 资源是否存在
+	 * @return
+	 */
 	boolean exists();
 
 	/**
@@ -68,6 +72,10 @@ public interface Resource extends InputStreamSource {
 	 * that the resource content cannot be read.
 	 * @see #getInputStream()
 	 */
+	/**
+	 * 资源是否可读
+	 * @return
+	 */
 	default boolean isReadable() {
 		return true;
 	}
@@ -77,6 +85,10 @@ public interface Resource extends InputStreamSource {
 	 * If {@code true}, the InputStream cannot be read multiple times,
 	 * and must be read and closed to avoid resource leaks.
 	 * <p>Will be {@code false} for typical resource descriptors.
+	 */
+	/**
+	 * 资源的句柄是否已经被一个stream打开了
+	 * @return
 	 */
 	default boolean isOpen() {
 		return false;
@@ -90,6 +102,10 @@ public interface Resource extends InputStreamSource {
 	 * @since 5.0
 	 * @see #getFile()
 	 */
+	/**
+	 * 资源是否为文件
+	 * @return
+	 */
 	default boolean isFile() {
 		return false;
 	}
@@ -99,6 +115,11 @@ public interface Resource extends InputStreamSource {
 	 * @throws IOException if the resource cannot be resolved as URL,
 	 * i.e. if the resource is not available as descriptor
 	 */
+	/**
+	 * 返回资源的URL的句柄
+	 * @return
+	 * @throws IOException
+	 */
 	URL getURL() throws IOException;
 
 	/**
@@ -106,6 +127,11 @@ public interface Resource extends InputStreamSource {
 	 * @throws IOException if the resource cannot be resolved as URI,
 	 * i.e. if the resource is not available as descriptor
 	 * @since 2.5
+	 */
+	/**
+	 * 返回资源的URI句柄
+	 * @return
+	 * @throws IOException
 	 */
 	URI getURI() throws IOException;
 
@@ -115,6 +141,11 @@ public interface Resource extends InputStreamSource {
 	 * absolute file path, i.e. if the resource is not available in a file system
 	 * @throws IOException in case of general resolution/reading failures
 	 * @see #getInputStream()
+	 */
+	/**
+	 * 返回资源文件的句柄
+	 * @return
+	 * @throws IOException
 	 */
 	File getFile() throws IOException;
 
@@ -145,6 +176,11 @@ public interface Resource extends InputStreamSource {
 	 * @throws IOException if the resource cannot be resolved
 	 * (in the file system or as some other known physical resource type)
 	 */
+	/**
+	 * 资源最后修改时间
+	 * @return
+	 * @throws IOException
+	 */
 	long lastModified() throws IOException;
 
 	/**
@@ -161,6 +197,10 @@ public interface Resource extends InputStreamSource {
 	 * <p>Returns {@code null} if this type of resource does not
 	 * have a filename.
 	 */
+	/**
+	 * 资源文件名
+	 * @return
+	 */
 	@Nullable
 	String getFilename();
 
@@ -170,6 +210,10 @@ public interface Resource extends InputStreamSource {
 	 * <p>Implementations are also encouraged to return this value
 	 * from their {@code toString} method.
 	 * @see Object#toString()
+	 */
+	/**
+	 * 资源的描述
+	 * @return
 	 */
 	String getDescription();
 
