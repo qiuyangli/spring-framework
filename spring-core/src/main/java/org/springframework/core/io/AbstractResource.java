@@ -51,6 +51,7 @@ public abstract class AbstractResource implements Resource {
 	@Override
 	public boolean exists() {
 		// Try file existence: can we find the file in the file system?
+		// 通过getFile()方法进行判断文件是否存在
 		try {
 			return getFile().exists();
 		}
