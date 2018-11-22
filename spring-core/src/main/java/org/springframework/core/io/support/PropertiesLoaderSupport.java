@@ -172,6 +172,7 @@ public abstract class PropertiesLoaderSupport {
 	 * @see #setLocations
 	 */
 	protected void loadProperties(Properties props) throws IOException {
+		// 读取本地.properties配置文件
 		if (this.locations != null) {
 			for (Resource location : this.locations) {
 				if (logger.isDebugEnabled()) {
